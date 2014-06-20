@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://elowing.github.io
-title: Dev Yarn
-subtitle: Only less rambling.
+title: Starting Over as a Web Developer
+subtitle: Sell your cleverness and buy bewilderment.
 author: Emily Lowing
 simple_search: https://www.google.com/search
-description: Short reflections on current Flatiron topics.
+description: Short reflections on topics from the Flatiron School, Ruby 005.
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
