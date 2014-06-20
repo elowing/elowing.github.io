@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://elowing.github.io/blog/2014/06/04/my-first-post-on-octopress/</loc>
-        <lastmod>2014-06-04T00:07:19-04:00</lastmod>
+        <loc>http://elowing.github.io/blog/2014/06/19/shortcuts-and-pitfalls-of-memoization/</loc>
+        <lastmod>2014-06-20T07:15:36-04:00</lastmod>
     </url>
     <url>
         <loc>http://elowing.github.io/blog/archives/</loc>
-        <lastmod>2014-06-04T00:07:19-04:00</lastmod>
+        <lastmod>2014-06-20T07:15:36-04:00</lastmod>
     </url>
     <url>
         <loc>http://elowing.github.io/</loc>
-        <lastmod>2014-06-04T00:07:19-04:00</lastmod>
+        <lastmod>2014-06-20T07:15:36-04:00</lastmod>
     </url>
     <url>
         <loc>http://elowing.github.io/robots.txt</loc>
