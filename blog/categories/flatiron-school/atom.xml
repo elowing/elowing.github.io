@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Flatiron&nbsp;School | Starting Over as a Web Developer]]></title>
   <link href="http://elowing.github.io/blog/categories/flatiron-school/atom.xml" rel="self"/>
   <link href="http://elowing.github.io/"/>
-  <updated>2014-06-20T07:16:01-04:00</updated>
+  <updated>2014-07-08T06:48:44-04:00</updated>
   <id>http://elowing.github.io/</id>
   <author>
     <name><![CDATA[Emily Lowing]]></name>
@@ -12,6 +12,92 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Traversing Binary Search Trees]]></title>
+    <link href="http://elowing.github.io/blog/2014/07/07/binary-search-trees/"/>
+    <updated>2014-07-07T19:26:43-04:00</updated>
+    <id>http://elowing.github.io/blog/2014/07/07/binary-search-trees</id>
+    <content type="html"><![CDATA[<p>Traversing a binary search tree can take as little as five lines of code, if you: a) know what you&rsquo;re doing; b) know a bit about recursion; and c) know a bit more about block parameters:</p>
+
+<p><code>ruby
+def each(&amp;block)
+ left.each(&amp;block) if left
+ block.call(data)
+ right.each(&amp;block) if right
+end
+</code></p>
+
+<ol>
+<li> An object (in this case, the parameter &lsquo;block&rsquo;) is passed into our method signature, prefixed with an ampersand.</li>
+<li> Ruby calls <code>to_proc</code> on &lsquo;block&rsquo; (if it is not already a <code>Proc</code> object), since it saw the ampersand there.</li>
+<li> We use recursion to iterate as follows:
+
+<ol>
+<li><code>each</code> is called recursively on a node&rsquo;s left child, until the leftmost child is reached.</li>
+<li>When there is no further left child, that direct parent node is then yielded.</li>
+<li><code>each</code> is then called recursively again, this time on that direct parent node&rsquo;s right children, if they exist.</li>
+</ol>
+</li>
+</ol>
+
+
+<p>In this way, an <em>ordered</em> list of all nodes within a binary search tree are properly yielded. There you go, that&rsquo;s it! You&rsquo;re all set. Well okay, let&rsquo;s back up a minute and inspect that <code>&amp;</code> symbol, the <em>ampersand</em>.</p>
+
+<h2>The Power of <code>&amp;</code></h2>
+
+<p><strong>We can use the ampersand in front of objects passed in to method calls or definitions (as arguments or parameters) in order to coax Ruby into treating the objects as blocks instead of objects.</strong></p>
+
+<p>Almost everything in Ruby is an object. Blocks are one of the few exceptions. In the context of the above code snippet, we see the ampersand prefixed to the object in the parameter of the method signature. This tells Ruby to expect a block, which it will try to conform to by calling <code>to_proc</code> on the parameter. Although blocks are not objects, <code>Proc</code>s are, and function in many similar ways.</p>
+
+<p>The ampersand also allows us to refer to our parameter by name within the method definition, as is necessary when recursing. This is especially powerful in our example above, as it allows us to use recursion in tandem with a block argument to recreate the <code>each</code> function within our <code>Binary Search Tree</code> class, yielding the data within each instance of the class as we iterate over all nodes in the tree.</p>
+
+<h2>Ways Around Using Blocks</h2>
+
+<p>By contrast, take a look below at the same function without block parameters or recursion:</p>
+
+<p>```ruby
+def each</p>
+
+<pre><code>node = self
+self.count.times do
+  node = node.left while node.left &amp;&amp; !node.left.yielded
+  unless node.yielded
+    yield node.data
+    node.yielded = true
+  end
+  if node.right
+    node = node.right
+  else
+    node = node.parent while node.parent &amp;&amp; node.parent.yielded
+    node = node.parent
+  end
+end
+</code></pre>
+
+<p>  end
+```</p>
+
+<p>Confusing, huh? Sure, it&rsquo;s <em>possible</em> to write a traversal method that doesn&rsquo;t use blocks or recursion, but why would you want to? Without recursion, we are forced to:</p>
+
+<ul>
+<li>keep track of how many instances of the class we have (hence the <code>self.count</code>), in order to make sure we loop through enough times to hit every node in the tree.</li>
+<li>use conditional loops to ensure we return an ordered list, by drilling down to the leftmost subnode of whatever parent node we&rsquo;re currently on in our larger traversal.</li>
+<li>keep track of whether our current node has previously been yielded, as we already may have passed it on our way down into a right sub-tree.</li>
+</ul>
+
+
+<h2>Wrapup and Resources</h2>
+
+<p>Blocks and recursion together provide a relevant and efficient means of recreating the <code>each</code> function for binary search trees, allowing us to traverse trees in a concise and neat manner.</p>
+
+<ul>
+<li><a href="http://deatheragetr.github.io/blog/2013/09/14/binary-search-trees/">http://deatheragetr.github.io/blog/2013/09/14/binary-search-trees/</a></li>
+<li><a href="http://www.skorks.com/2013/04/ruby-ampersand-parameter-demystified/">http://www.skorks.com/2013/04/ruby-ampersand-parameter-demystified/</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Double Pipes Equals What?]]></title>
