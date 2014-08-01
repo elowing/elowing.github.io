@@ -23,4 +23,4 @@ In summary, I think that the most important qualifications (given intelligence) 
 
 Th-th-thats-all-folks.
 
-{% img /images/james.png %}
+![Dad Pic](/images/james.png)
